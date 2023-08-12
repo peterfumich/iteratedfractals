@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<form method="POST">
+
+
+<body style="text-color:White;background-color:DarkSlateBlue;">
+<p style="color:White;">
+    Function: <textarea type="text" name="function" rows="1" style="width:40%;color:Black;">{{function}}</textarea>
+    Transform: <textarea type="text" name="transform" rows="1" style="width:40%;color:Black;">{{transform}}</textarea></br>
+    Center(X):<input type="text" name="center_x" value = "{{center_x}}" style="color:Black;">
+    Center(Y):<input type="text" name="center_y" value = "{{center_y}}" style="color:Black;"></br>
+    Coloring Method:<input type="range" style="width:10%;" min="0" max="1" step="1" value = "{{coloring_method}}" name="coloring_method" />{{coloring_method}}
+    Palette Folder::<input type="text" name="palette_folder" value = "{{palette_folder}}" style="color:Black;"> Palette Scale:<input type="text" name="palette_scale" value = "{{palette_scale}}" style="color:Black;"></br>
+    Color Transformation : <textarea type="text" name="color_transform" rows="1" style="width:40%;color:Black;">{{color_transform}}</textarea>
+    </br>
+    COLORS :________<Cyan>Cyan</Cyan>________|________<Magenta>Magenta</Magenta>_______|_________<Yellow>Yellow</Yellow>________|________<Black>Black</Black>________|________Lengths_______</br>
+    Color 1: <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[0][0]}}" name="c1_0">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[0][1]}}" name="c1_1">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[0][2]}}" name="c1_2">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[0][3]}}" name="c1_3">
+    <input type="text" name="c1_len" value = "{{color_lengths[0]}}"style="color:Black;"></br>
+    Color 2: <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[1][0]}}" name="c2_0">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[1][1]}}" name="c2_1">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[1][2]}}" name="c2_2">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[1][3]}}" name="c2_3">
+    <input type="text" name="c2_len" value = "{{color_lengths[1]}}"style="color:Black;"></br>
+    Color 3: <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[2][0]}}" name="c3_0">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[2][1]}}" name="c3_1">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[2][2]}}" name="c3_2">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[2][3]}}" name="c3_3">
+    <input type="text" name="c3_len" value = "{{color_lengths[2]}}"style="color:Black;"></br>
+    Color 4: <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[3][0]}}" name="c4_0">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[3][1]}}" name="c4_1">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[3][2]}}" name="c4_2">
+    <input type="range" style="width:9%;display:inline" min="0" max="100" step="1" value = "{{colors[3][3]}}" name="c4_3">
+    <input type="text" name="c4_len" value = "{{color_lengths[3]}}"style="color:Black;"></br>
+
+
+    </br>Maximum Iterations: <input type="text" name="max_iterations_input" value = "{{max_iterations}}" style="color:Black;">
+    Zoom: <input type="text" name="zoom_input" value = "{{zoom}}" style="color:Black;"></br>
+
+
+
+    Name: <input type="text" placeholder="Name of output" value = "{{name}}" name="name" style="color:Black;"><input type="submit" name = 'action' value="Rename"style="color:Black;">
+
+
+    Render Scale:<input type="text" name="scale" value = "{{scale}}" style="color:Black;"></br>
+
+
+
+    <input type="submit" name = 'action' style="color:Black;" value="Render">
+<label for="file-explorer" style="color:Black;">File Explorer</label>
+                    <select name="files" style="color:Black;">
+                    {% for file in files %}
+                    <option value="{{ file }}">{{ file }}</option>
+                    {% endfor %}
+                    </select>
+    <input type="submit" name='action' value="Load File" style="color:Black;"><input type="submit" name = 'action' value="Delete File" style="color:Black;">
+    Display Size:<input type="range" style="width:80%;" min="256" max="4096" step="256" value = "{{display_size}}" name="display_size" />{{display_size}}<br>
+
+
+<img src="{{ url_for('static', filename='render.png') }}" width="{{display_size}}" height="auto" alt="Fractal"/>
+<input type="submit" name='action' value="Zoom Video" style="color:Black;">
+<input type="submit" name='action' value="Function Video" style="color:Black;">
+<input type="submit" name='action' value="Zoom Transform Video" style="color:Black;">
+</body>
+</form>
